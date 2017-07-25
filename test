@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+echo "false < expected without ./.npmrc"
+npm config get save-exact
+
+cd save-exact-true
+echo "true < expected with ./.npmrc"
+npm config get save-exact
+
+cd still-save-exact-true
+echo "true < expected without ./.npmrc, but with ../.npmrc, no package.json"
+npm config get save-exact
+
+cd no-more-save-exact-true
+echo "false < expected without .npmrc, with ../../.npmrc but with package.json"
+npm config get save-exact
